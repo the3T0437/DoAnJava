@@ -154,7 +154,8 @@ public class ModelLoaiSanTest {
 		mdLoaiSan.them(ls6);
 
 		Collections.shuffle(mdLoaiSan.getDS());
-		mdLoaiSan.XapXepTheoMaLS();
+		mdLoaiSan.setComparator(ModelLoaiSan.getXapXepTheoMaLS());
+		mdLoaiSan.sapXep();
 		for (int i = 1; i < mdLoaiSan.getDS().size(); i++){
 			String maLoaiSan1 = mdLoaiSan.getDS().get(i-1).getMaLoaiSan();
 			String maLoaiSan2 = mdLoaiSan.getDS().get(i).getMaLoaiSan();
@@ -182,7 +183,8 @@ public class ModelLoaiSanTest {
 		mdLoaiSan.them(ls6);
 
 		Collections.shuffle(mdLoaiSan.getDS());
-		mdLoaiSan.XapXepTheoMaLS();
+		mdLoaiSan.setComparator(ModelLoaiSan.getXapXepTheoDonGia());
+		mdLoaiSan.sapXep();
 		for (int i = 1; i < mdLoaiSan.getDS().size(); i++){
 			int donGia1 = mdLoaiSan.getDS().get(i-1).getDonGia();
 			int donGia2 = mdLoaiSan.getDS().get(i).getDonGia();
