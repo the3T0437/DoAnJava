@@ -43,7 +43,6 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                 btn_them = new javax.swing.JButton();
                 btn_xoa = new javax.swing.JButton();
                 btn_sua = new javax.swing.JButton();
-                lbl_thongBao = new javax.swing.JLabel();
                 jScrollPane2 = new javax.swing.JScrollPane();
                 table_output = new javax.swing.JTable();
                 jLabel4 = new javax.swing.JLabel();
@@ -79,10 +78,6 @@ public class frm_LoaiSan extends javax.swing.JFrame {
 
                 btn_sua.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
                 btn_sua.setText("Sửa");
-
-                lbl_thongBao.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                lbl_thongBao.setForeground(new java.awt.Color(204, 0, 51));
-                lbl_thongBao.setText("Thông báo");
 
                 table_output.setModel(new javax.swing.table.DefaultTableModel(
                         new Object [][] {
@@ -143,8 +138,7 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(btn_luu)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btn_doc))
-                                        .addComponent(lbl_thongBao))
+                                                .addComponent(btn_doc)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,9 +170,7 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                                                         .addComponent(btn_xoa)
                                                         .addComponent(btn_sua)
                                                         .addComponent(btn_luu)
-                                                        .addComponent(btn_doc))
-                                                .addGap(26, 26, 26)
-                                                .addComponent(lbl_thongBao))
+                                                        .addComponent(btn_doc)))
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -237,7 +229,6 @@ public class frm_LoaiSan extends javax.swing.JFrame {
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JScrollPane jScrollPane2;
-        private javax.swing.JLabel lbl_thongBao;
         private javax.swing.JTable table_output;
         private javax.swing.JTextField tf_DonGia;
         private javax.swing.JTextField tf_MaLoaiSan;
@@ -265,10 +256,6 @@ public class frm_LoaiSan extends javax.swing.JFrame {
 
 	public JButton getBtn_xoa() {
 		return btn_xoa;
-	}
-
-	public JLabel getLbl_thongBao() {
-		return lbl_thongBao;
 	}
 
 	public JTable getTable_output() {

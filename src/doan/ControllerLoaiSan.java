@@ -60,7 +60,10 @@ public class ControllerLoaiSan {
 	}
 
 	public void baoLoi(String loi){
-		form.getLbl_thongBao().setText("lỗi: " + loi);
+		JOptionPane.showMessageDialog(null, "lỗi: " + loi, "Báo Lỗi", JOptionPane.ERROR_MESSAGE);
+	}
+	public void thongBao(String tb){
+		JOptionPane.showMessageDialog(null, tb, "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	private ActionListener getThemListener(){
@@ -73,6 +76,7 @@ public class ControllerLoaiSan {
 
 					mdLoaiSan.them(new LoaiSan(maLoaiSan, donGia));
 
+					thongBao("Thêm thành công");
 					hienThi();
 				}catch(NumberFormatException e){
 					baoLoi("số không hợp lệ");
@@ -91,12 +95,17 @@ public class ControllerLoaiSan {
 					return;
 				}
 
+				int isDelete = JOptionPane.showConfirmDialog(null, "Bạn có muốn xoá?", "Thông Báo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (isDelete == JOptionPane.NO_OPTION)
+					return;
+
 				for (int i = selectedRow.length - 1; i >= 0; i--){
 					String maLoaiSan = (String)form.getTable_output().getValueAt(selectedRow[i], 0);
 
 					mdLoaiSan.xoa(maLoaiSan);
 				}
 
+				thongBao("Xoá thành công");
 				hienThi();
 			}
 		};
@@ -129,7 +138,7 @@ public class ControllerLoaiSan {
 			public void actionPerformed(ActionEvent evt){
 				try{
 					mdLoaiSan.ghiFile(path);
-					JOptionPane.showMessageDialog(null, "lưu file thành công");
+					thongBao("Lưu file thành công");
 				}catch(Exception e){
 					baoLoi(e.getMessage());
 				}
@@ -142,7 +151,7 @@ public class ControllerLoaiSan {
 			public void actionPerformed(ActionEvent evt){
 				try{
 					mdLoaiSan.docFile(path);
-					JOptionPane.showMessageDialog(null, "đọc file thành công");
+					thongBao("Đọc file thành công");
 					hienThi();
 				} catch (Exception e){
 					baoLoi(e.getMessage());
