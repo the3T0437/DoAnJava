@@ -6,6 +6,7 @@ package doan;
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.event.*;
+import java.util.Comparator;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -32,9 +33,12 @@ public class ControllerLoaiSan {
 		form.getBtn_sua().addActionListener(this.getSuaListener());
 		form.getBtn_luu().addActionListener(this.getLuuListener());
 		form.getBtn_doc().addActionListener(this.getDocListener());
+		form.getTable_output().addMouseListener(this.getSelectedElemenetListener());
+		form.getCbx_Sort().addItemListener(this.getSortListener());
 	}
 
 	public void hienThi(){
+		mdLoaiSan.sapXep();
 		List<LoaiSan> list = mdLoaiSan.getDS();
 
 		int countCol = form.getTable_output().getColumnCount();
@@ -81,26 +85,19 @@ public class ControllerLoaiSan {
 	private ActionListener getXoaListener(){
 		return new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
-				try{
-					String maLoaiSan = form.getTf_MaLoaiSan().getText(); 
-					
-					if (mdLoaiSan.tim(maLoaiSan) == null){
-						baoLoi("loại sân không tồn tại");
-						return;
-					}
+				int[] selectedRow = form.getTable_output().getSelectedRows(); 
+				if (selectedRow.length == 0){
+					baoLoi("không có đối tượng được chọn để xoá");
+					return;
+				}
 
-					int isDelete = JOptionPane.showConfirmDialog(null, "bạn có chắc muốn xoá?", "Thông Báo", JOptionPane.YES_NO_OPTION);
-					if (isDelete == JOptionPane.NO_OPTION)
-						return;
+				for (int i = selectedRow.length - 1; i >= 0; i--){
+					String maLoaiSan = (String)form.getTable_output().getValueAt(selectedRow[i], 0);
 
 					mdLoaiSan.xoa(maLoaiSan);
-					hienThi();
-						
-				}catch(NumberFormatException e){
-					baoLoi("số không hợp lệ");
-				}catch(IllegalArgumentException e){
-					baoLoi(e.getMessage()); 
 				}
+
+				hienThi();
 			}
 		};
 	}
@@ -150,6 +147,43 @@ public class ControllerLoaiSan {
 				} catch (Exception e){
 					baoLoi(e.getMessage());
 				}
+			}
+		};
+	}
+
+	private MouseListener getSelectedElemenetListener(){
+		return new MouseAdapter(){
+			public void mouseClicked(MouseEvent evt){
+				int[] selectedList = form.getTable_output().getSelectedRows(); 
+				if(selectedList.length != 1)
+					return;
+				int selectedRow = selectedList[0];
+
+				String maLoaiSan = (String)form.getTable_output().getValueAt(selectedRow, 0);
+				String donGiaStr = (String)form.getTable_output().getValueAt(selectedRow, 1);
+
+				form.getTf_MaLoaiSan().setText(maLoaiSan);
+				form.getTf_DonGia().setText(donGiaStr);
+			}
+		};
+	}
+
+	private ItemListener getSortListener(){
+		return new ItemListener(){
+			public void itemStateChanged(ItemEvent evt){
+				Comparator comp = null;
+				int selectedIndex = form.getCbx_Sort().getSelectedIndex();
+				switch(selectedIndex){
+					case 0:
+						comp = ModelLoaiSan.getXapXepTheoMaLS();
+						break;
+					case 1:
+						comp = ModelLoaiSan.getXapXepTheoDonGia();
+						break;
+				}
+
+				mdLoaiSan.setComparator(comp);
+				hienThi();
 			}
 		};
 	}

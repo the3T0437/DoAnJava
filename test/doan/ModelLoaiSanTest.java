@@ -4,6 +4,7 @@
  */
 package doan;
 
+import java.io.IOException;
 import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
@@ -110,7 +111,7 @@ public class ModelLoaiSanTest {
 	 * Test of ghiFile method, of class ModelLoaiSan.
 	 */
 	@Test
-	public void testGhiFile() {
+	public void testGhiFile() throws IOException {
 		LoaiSan ls1 = new LoaiSan("ls01", 01);
 		LoaiSan ls2 = new LoaiSan("ls02", 02);
 		LoaiSan ls3 = new LoaiSan("ls03", 03);
@@ -128,7 +129,7 @@ public class ModelLoaiSanTest {
 	 * Test of docFile method, of class ModelLoaiSan.
 	 */
 	@Test
-	public void testDocFile() {
+	public void testDocFile() throws IOException {
 		mdLoaiSan.docFile("danhSach_LoaiSan.txt"); 
 		assertEquals(true, mdLoaiSan.getDS().size() != 0);
 	}

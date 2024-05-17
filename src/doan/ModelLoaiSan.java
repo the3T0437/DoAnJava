@@ -23,6 +23,7 @@ import java.util.Scanner;
 public class ModelLoaiSan {
 
 	private static List<LoaiSan> danhSachLoaiSan = new ArrayList<>();
+	public static Comparator comp = getXapXepTheoMaLS();
 	public void clearAll(){
 		while (danhSachLoaiSan.size() != 0)
 			danhSachLoaiSan.remove(0);
@@ -70,7 +71,7 @@ public class ModelLoaiSan {
 	}
 	// ghi vao file
 
-	public void ghiFile(String fileLoaiSan) {
+	public void ghiFile(String fileLoaiSan) throws IOException {
 		try {
 			FileWriter fileWriter = new FileWriter(fileLoaiSan);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -82,12 +83,13 @@ public class ModelLoaiSan {
 			bufferedWriter.close();
 			fileWriter.close();
 		} catch (IOException e) {
-			e.getMessage();
+			e.printStackTrace();
+			throw new IOException("ghi file thất bại");
 		}
 	}
 
 	// doc file
-	public void docFile(String fileLoaiSan) {
+	public void docFile(String fileLoaiSan) throws IOException {
 		ArrayList<LoaiSan> dsLoaiSan = new ArrayList<>();
 		try {
 			FileReader fileReader = new FileReader(fileLoaiSan);
@@ -106,17 +108,24 @@ public class ModelLoaiSan {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return;
+			throw new IOException("đọc file thất bại");
 		}
 
 		ModelLoaiSan.danhSachLoaiSan = dsLoaiSan; 
 	}
 
-	// sap xep theo ma loaiSan
-	public void XapXepTheoMaLS() {
-		Collections.sort(danhSachLoaiSan, Comparator.comparing(LoaiSan::getMaLoaiSan));
+	public void setComparator(Comparator comp){
+		this.comp = comp;
 	}
-	public void XapXepTheoDonGia() {
-		Collections.sort(danhSachLoaiSan, Comparator.comparing(LoaiSan::getDonGia));
+
+	public void sapXep(){
+		Collections.sort(danhSachLoaiSan, comp);
+	}
+	// sap xep theo ma loaiSan
+	public static Comparator getXapXepTheoMaLS() {
+		return Comparator.comparing(LoaiSan::getMaLoaiSan);
+	}
+	public static Comparator getXapXepTheoDonGia() {
+		return Comparator.comparing(LoaiSan::getDonGia);
 	}
 }
