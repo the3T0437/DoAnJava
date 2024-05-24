@@ -4,6 +4,8 @@
  */
 package doan;
 
+import LoaiSan.LoaiSan;
+import LoaiSan.Model_LoaiSan;
 import java.io.IOException;
 import java.util.Collections;
 import org.junit.Before;
@@ -19,15 +21,15 @@ public class ModelLoaiSanTest {
 	public ModelLoaiSanTest() {
 	}
 	
-	ModelLoaiSan mdLoaiSan; 
+	Model_LoaiSan mdLoaiSan; 
 	@Before
 	public void setUp() {
-		mdLoaiSan = new ModelLoaiSan();
+		mdLoaiSan = new Model_LoaiSan();
 		mdLoaiSan.clearAll();
 	}
 
 	/**
-	 * Test of them method, of class ModelLoaiSan.
+	 * Test of them method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testThem() {
@@ -46,7 +48,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of tim method, of class ModelLoaiSan.
+	 * Test of tim method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testTim() {
@@ -64,7 +66,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of xoa method, of class ModelLoaiSan.
+	 * Test of xoa method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testXoa() {
@@ -84,7 +86,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of sua method, of class ModelLoaiSan.
+	 * Test of sua method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testSua() {
@@ -108,7 +110,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of ghiFile method, of class ModelLoaiSan.
+	 * Test of ghiFile method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testGhiFile() throws IOException {
@@ -126,7 +128,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of docFile method, of class ModelLoaiSan.
+	 * Test of docFile method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testDocFile() throws IOException {
@@ -135,7 +137,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of XapXepTheoMaLS method, of class ModelLoaiSan.
+	 * Test of XapXepTheoMaLS method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testXapXepTheoMaLS() {
@@ -154,7 +156,7 @@ public class ModelLoaiSanTest {
 		mdLoaiSan.them(ls6);
 
 		Collections.shuffle(mdLoaiSan.getDS());
-		mdLoaiSan.setComparator(ModelLoaiSan.getXapXepTheoMaLS());
+		mdLoaiSan.setComparator(Model_LoaiSan.getXapXepTheoMaLS());
 		mdLoaiSan.sapXep();
 		for (int i = 1; i < mdLoaiSan.getDS().size(); i++){
 			String maLoaiSan1 = mdLoaiSan.getDS().get(i-1).getMaLoaiSan();
@@ -164,7 +166,7 @@ public class ModelLoaiSanTest {
 	}
 
 	/**
-	 * Test of XapXepTheoDonGia method, of class ModelLoaiSan.
+	 * Test of XapXepTheoDonGia method, of class Model_LoaiSan.
 	 */
 	@Test
 	public void testXapXepTheoDonGia() {
@@ -183,7 +185,7 @@ public class ModelLoaiSanTest {
 		mdLoaiSan.them(ls6);
 
 		Collections.shuffle(mdLoaiSan.getDS());
-		mdLoaiSan.setComparator(ModelLoaiSan.getXapXepTheoDonGia());
+		mdLoaiSan.setComparator(Model_LoaiSan.getXapXepTheoDonGia());
 		mdLoaiSan.sapXep();
 		for (int i = 1; i < mdLoaiSan.getDS().size(); i++){
 			int donGia1 = mdLoaiSan.getDS().get(i-1).getDonGia();

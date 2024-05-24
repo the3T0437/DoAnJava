@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package doan;
+package LoaiSan;
+import LoaiSan.LoaiSan;
+import LoaiSan.frm_LoaiSan;
+import LoaiSan.Model_LoaiSan;
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.event.*;
@@ -16,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ControllerLoaiSan {
 	private final String path = "danhSach_LoaiSan.txt";
-	private ModelLoaiSan mdLoaiSan;
+	private Model_LoaiSan mdLoaiSan;
 	private frm_LoaiSan form; 
 
 	public static void main(String[] args){
@@ -25,7 +28,7 @@ public class ControllerLoaiSan {
 	}
 
 	public ControllerLoaiSan(){
-		mdLoaiSan = new ModelLoaiSan(); 
+		mdLoaiSan = Model_LoaiSan.getInstance();
 		form = new frm_LoaiSan();
 
 		form.getBtn_them().addActionListener(this.getThemListener());
@@ -35,6 +38,10 @@ public class ControllerLoaiSan {
 		form.getBtn_doc().addActionListener(this.getDocListener());
 		form.getTable_output().addMouseListener(this.getSelectedElemenetListener());
 		form.getCbx_Sort().addItemListener(this.getSortListener());
+	}
+
+	public void visibleTrue(){
+		form.setVisible(true);
 	}
 
 	public void hienThi(){
@@ -123,7 +130,7 @@ public class ControllerLoaiSan {
 					mdLoaiSan.sua(lsMoi);
 
 					hienThi();
-					JOptionPane.showMessageDialog(null, "sửa thành công");
+					thongBao("sửa thành công");
 				}catch(NumberFormatException e){
 					baoLoi("số không hợp lệ");
 				}catch(IllegalArgumentException e){
@@ -184,10 +191,10 @@ public class ControllerLoaiSan {
 				int selectedIndex = form.getCbx_Sort().getSelectedIndex();
 				switch(selectedIndex){
 					case 0:
-						comp = ModelLoaiSan.getXapXepTheoMaLS();
+						comp = Model_LoaiSan.getXapXepTheoMaLS();
 						break;
 					case 1:
-						comp = ModelLoaiSan.getXapXepTheoDonGia();
+						comp = Model_LoaiSan.getXapXepTheoDonGia();
 						break;
 				}
 

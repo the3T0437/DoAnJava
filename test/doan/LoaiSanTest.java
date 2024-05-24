@@ -4,6 +4,7 @@
  */
 package doan;
 
+import LoaiSan.LoaiSan;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

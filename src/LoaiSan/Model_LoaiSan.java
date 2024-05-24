@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package doan;
+package LoaiSan;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,35 +16,72 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+import doan.ListenerXoaLoaiSan;
 /**
  *
  * @author thanh
  */
-public class ModelLoaiSan {
 
-	private static List<LoaiSan> danhSachLoaiSan = new ArrayList<>();
+public class Model_LoaiSan {
+	private static final String PATH = "danhSach_LoaiSan.txt"; 
+
+	private static List<LoaiSan> danhSachLoaiSan = null;
 	public static Comparator comp = getXapXepTheoMaLS();
 	public void clearAll(){
-		while (danhSachLoaiSan.size() != 0)
-			danhSachLoaiSan.remove(0);
+		while (this.getDS().size() != 0)
+			this.getDS().remove(0);
+	}
+
+	/*
+	 * Dam bao chi co 1 instance cua Model_LoaiSan
+	 */
+	private Model_LoaiSan(){}
+	private static Model_LoaiSan instance = new Model_LoaiSan();
+	public static Model_LoaiSan getInstance(){
+		return instance;
+	}	
+
+	/*
+	 * thong bao den cac class khac khi xoa
+	 */
+	private static List<ListenerXoaLoaiSan> listenerXoaLoaiSan = new ArrayList<>();
+	public void addListener(ListenerXoaLoaiSan listener){
+		listenerXoaLoaiSan.add(listener);
+	}
+	public void removeListener(ListenerXoaLoaiSan listener){
+		listenerXoaLoaiSan.remove(listener);
+	}
+	public void thongBaoKhiXoa(LoaiSan loaiSan){
+		for(ListenerXoaLoaiSan listener : listenerXoaLoaiSan){
+			listener.xuLy(loaiSan);
+		}
 	}
 
 	// them doi tuong
 	public List<LoaiSan> getDS(){
+		if(danhSachLoaiSan != null)
+			return danhSachLoaiSan;
+
+		try{
+			(new Model_LoaiSan()).docFile(PATH);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 		return danhSachLoaiSan;
 	}
 	public void them(LoaiSan loaiSanMoi) {
-		for (LoaiSan loaiSan : danhSachLoaiSan) {
+		for (LoaiSan loaiSan : this.getDS()) {
 			if (loaiSan.getMaLoaiSan().equals(loaiSanMoi.getMaLoaiSan())) {
 				throw new IllegalArgumentException("mã loại sân bị trùng");
 			}
 		}
-		danhSachLoaiSan.add(loaiSanMoi);
+		this.getDS().add(loaiSanMoi);
 	}
 	//tim loai loaiSan
 
 	public LoaiSan tim(String maLoaiSan) {
-		for (LoaiSan san : danhSachLoaiSan) {
+		for (LoaiSan san : this.getDS()) {
 			if (san.getMaLoaiSan().equals(maLoaiSan)) {
 				return san;
 			}
@@ -57,7 +94,9 @@ public class ModelLoaiSan {
 		LoaiSan loaiSan = tim(maLoaiSan);
 		if (loaiSan == null)
 			throw new IllegalArgumentException("loại sân không tồn tại");
-		danhSachLoaiSan.remove(loaiSan);
+		this.getDS().remove(loaiSan);
+
+		thongBaoKhiXoa(loaiSan);
 	}
 
 	// sua thong tin
@@ -76,8 +115,8 @@ public class ModelLoaiSan {
 			FileWriter fileWriter = new FileWriter(fileLoaiSan);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			LoaiSan loaiSan = null;
-			for (int i = 0; i < danhSachLoaiSan.size(); i++) {
-				loaiSan = danhSachLoaiSan.get(i);
+			for (int i = 0; i < this.getDS().size(); i++) {
+				loaiSan = this.getDS().get(i);
 				bufferedWriter.write(loaiSan.getMaLoaiSan() + "_" + loaiSan.getDonGia() + "\n");
 			}
 			bufferedWriter.close();
@@ -111,7 +150,7 @@ public class ModelLoaiSan {
 			throw new IOException("đọc file thất bại");
 		}
 
-		ModelLoaiSan.danhSachLoaiSan = dsLoaiSan; 
+		Model_LoaiSan.danhSachLoaiSan = dsLoaiSan; 
 	}
 
 	public void setComparator(Comparator comp){
@@ -119,7 +158,7 @@ public class ModelLoaiSan {
 	}
 
 	public void sapXep(){
-		Collections.sort(danhSachLoaiSan, comp);
+		Collections.sort(this.getDS(), comp);
 	}
 	// sap xep theo ma loaiSan
 	public static Comparator getXapXepTheoMaLS() {

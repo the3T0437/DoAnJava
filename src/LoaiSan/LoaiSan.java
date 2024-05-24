@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package doan;
+package LoaiSan;
 
 /**
  *
@@ -44,4 +44,9 @@ public class LoaiSan {
 		return "ma loai san" + " " + maLoaiSan + " ," + "don gia" + " " + donGia;
 	}
 
+	public boolean isEquals(LoaiSan ls){
+		if (ls == null)
+			return false;
+		return this.maLoaiSan.equals(ls.maLoaiSan);
+	}
 }

@@ -43,15 +43,15 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="btn_them" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Them" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_xoa" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Xoa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_sua" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Sua" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_luu" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Luu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_doc" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Doc" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
@@ -87,11 +87,11 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_them" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_xoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_sua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_luu" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_doc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Them" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Xoa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Sua" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Luu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Doc" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane2" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_luu">
+    <Component class="javax.swing.JButton" name="btn_Luu">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -156,7 +156,7 @@
         <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_doc">
+    <Component class="javax.swing.JButton" name="btn_Doc">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -164,7 +164,7 @@
         <Property name="text" type="java.lang.String" value="&#x110;&#x1ecd;c"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_them">
+    <Component class="javax.swing.JButton" name="btn_Them">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -172,7 +172,7 @@
         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_xoa">
+    <Component class="javax.swing.JButton" name="btn_Xoa">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -180,7 +180,7 @@
         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_sua">
+    <Component class="javax.swing.JButton" name="btn_Sua">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="0"/>
@@ -195,7 +195,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="table_output">
+        <Component class="javax.swing.JTable" name="table_Output">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="0">

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package doan;
+package LoaiSan;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -38,13 +38,13 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                 jLabel3 = new javax.swing.JLabel();
                 tf_DonGia = new javax.swing.JTextField();
                 tf_MaLoaiSan = new javax.swing.JTextField();
-                btn_luu = new javax.swing.JButton();
-                btn_doc = new javax.swing.JButton();
-                btn_them = new javax.swing.JButton();
-                btn_xoa = new javax.swing.JButton();
-                btn_sua = new javax.swing.JButton();
+                btn_Luu = new javax.swing.JButton();
+                btn_Doc = new javax.swing.JButton();
+                btn_Them = new javax.swing.JButton();
+                btn_Xoa = new javax.swing.JButton();
+                btn_Sua = new javax.swing.JButton();
                 jScrollPane2 = new javax.swing.JScrollPane();
-                table_output = new javax.swing.JTable();
+                table_Output = new javax.swing.JTable();
                 jLabel4 = new javax.swing.JLabel();
                 cbx_Sort = new javax.swing.JComboBox<>();
 
@@ -64,22 +64,22 @@ public class frm_LoaiSan extends javax.swing.JFrame {
 
                 tf_MaLoaiSan.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
-                btn_luu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                btn_luu.setText("Lưu");
+                btn_Luu.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                btn_Luu.setText("Lưu");
 
-                btn_doc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                btn_doc.setText("Đọc");
+                btn_Doc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                btn_Doc.setText("Đọc");
 
-                btn_them.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                btn_them.setText("Thêm");
+                btn_Them.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                btn_Them.setText("Thêm");
 
-                btn_xoa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                btn_xoa.setText("Xoá");
+                btn_Xoa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                btn_Xoa.setText("Xoá");
 
-                btn_sua.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-                btn_sua.setText("Sửa");
+                btn_Sua.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+                btn_Sua.setText("Sửa");
 
-                table_output.setModel(new javax.swing.table.DefaultTableModel(
+                table_Output.setModel(new javax.swing.table.DefaultTableModel(
                         new Object [][] {
 
                         },
@@ -102,7 +102,7 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                                 return canEdit [columnIndex];
                         }
                 });
-                jScrollPane2.setViewportView(table_output);
+                jScrollPane2.setViewportView(table_Output);
 
                 jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
                 jLabel4.setText("Tiêu chí sắp xếp:");
@@ -130,15 +130,15 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                                                         .addComponent(tf_DonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(tf_MaLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btn_them)
+                                                .addComponent(btn_Them)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btn_xoa)
+                                                .addComponent(btn_Xoa)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btn_sua)
+                                                .addComponent(btn_Sua)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btn_luu)
+                                                .addComponent(btn_Luu)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btn_doc)))
+                                                .addComponent(btn_Doc)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,11 +166,11 @@ public class frm_LoaiSan extends javax.swing.JFrame {
                                                         .addComponent(tf_DonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(btn_them)
-                                                        .addComponent(btn_xoa)
-                                                        .addComponent(btn_sua)
-                                                        .addComponent(btn_luu)
-                                                        .addComponent(btn_doc)))
+                                                        .addComponent(btn_Them)
+                                                        .addComponent(btn_Xoa)
+                                                        .addComponent(btn_Sua)
+                                                        .addComponent(btn_Luu)
+                                                        .addComponent(btn_Doc)))
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,24 +218,24 @@ public class frm_LoaiSan extends javax.swing.JFrame {
     }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btn_doc;
-        private javax.swing.JButton btn_luu;
-        private javax.swing.JButton btn_sua;
-        private javax.swing.JButton btn_them;
-        private javax.swing.JButton btn_xoa;
+        private javax.swing.JButton btn_Doc;
+        private javax.swing.JButton btn_Luu;
+        private javax.swing.JButton btn_Sua;
+        private javax.swing.JButton btn_Them;
+        private javax.swing.JButton btn_Xoa;
         private javax.swing.JComboBox<String> cbx_Sort;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JScrollPane jScrollPane2;
-        private javax.swing.JTable table_output;
+        private javax.swing.JTable table_Output;
         private javax.swing.JTextField tf_DonGia;
         private javax.swing.JTextField tf_MaLoaiSan;
         // End of variables declaration//GEN-END:variables
 
 	public JButton getBtn_doc() {
-		return btn_doc;
+		return btn_Doc;
 	}
 
 	public JComboBox<String> getCbx_Sort() {
@@ -243,23 +243,23 @@ public class frm_LoaiSan extends javax.swing.JFrame {
 	}
 
 	public JButton getBtn_luu() {
-		return btn_luu;
+		return btn_Luu;
 	}
 
 	public JButton getBtn_sua() {
-		return btn_sua;
+		return btn_Sua;
 	}
 
 	public JButton getBtn_them() {
-		return btn_them;
+		return btn_Them;
 	}
 
 	public JButton getBtn_xoa() {
-		return btn_xoa;
+		return btn_Xoa;
 	}
 
 	public JTable getTable_output() {
-		return table_output;
+		return table_Output;
 	}
 
 	public JTextField getTf_DonGia() {
