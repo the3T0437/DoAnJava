@@ -1,0 +1,7 @@
+hd01 _ kh02 _ nv02 _ sb03
+hd02 _ kh01 _ nv02 _ 
+hd03 _ kh01 _ nv02 _ 
+hd04 _ kh01 _ nv02 _ sb01
+hd05 _ kh02 _ nv03 _ sb02
+hd06 _ kh03 _ nv03 _ sb02
+hd07 _ kh03 _ nv04 _ sb02

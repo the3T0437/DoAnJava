@@ -52,6 +52,7 @@ public class Model_LoaiSan {
 		listenerXoaLoaiSan.remove(listener);
 	}
 	public void thongBaoKhiXoa(LoaiSan loaiSan){
+		System.out.println(listenerXoaLoaiSan.size());
 		for(ListenerXoaLoaiSan listener : listenerXoaLoaiSan){
 			listener.xuLy(loaiSan);
 		}

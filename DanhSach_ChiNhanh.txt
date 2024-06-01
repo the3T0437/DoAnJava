@@ -1,0 +1,3 @@
+cn01_ chi nhanh 02_ a_ 0123456789_ nv01
+cn02_ chi nhanh 02_ a_ 0123456789_ nv01
+cn03_ chi nhanh 01_ a_ 0123456888_ nv02

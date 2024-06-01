@@ -6,8 +6,7 @@ package SanBanh;
 
 import LoaiSan.Model_LoaiSan;
 import LoaiSan.LoaiSan;
-import doan.ChiNhanh;
-import doan.Model_ChiNhanh;
+import ChiNhanh.*;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,6 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import doan.ListenerXoaLoaiSan;
+import doan.ListenerXoaSanBanh;
+import doan.ListenerXoaCN;
 
 /**
  *
@@ -24,16 +25,17 @@ import doan.ListenerXoaLoaiSan;
  */
 public class Model_SanBanh {
 	public static final String PATH= "danhSach_SanBanh.txt"; 
-	private static Model_ChiNhanh mdChiNhanh = new Model_ChiNhanh();
+	private static Modal_CN mdChiNhanh = Modal_CN.getInstance();
 	private static Model_LoaiSan mdLoaiSan = Model_LoaiSan.getInstance();
 	private static List<SanBanh> dsSanBanh = null;
 
 
-	private Comparator comp;
+	private static Comparator comp;
 
 	private Model_SanBanh(){
 		comp = MASB_ASC;
 		mdLoaiSan.addListener(this.listenerXoaLoaiSan);
+		mdChiNhanh.addListener(listenerXoaCN);
 	}
 	
 	/*
@@ -42,6 +44,21 @@ public class Model_SanBanh {
 	private static Model_SanBanh instance = new Model_SanBanh();
 	public static Model_SanBanh getInstance(){
 		return instance;
+	}
+	/*
+	 * thong bao den cac class khac khi xoa
+	 */
+	private static List<ListenerXoaSanBanh> listenerXoaSB= new ArrayList<>();
+	public void addListener(ListenerXoaSanBanh listener){
+		listenerXoaSB.add(listener);
+	}
+	public void removeListener(ListenerXoaSanBanh listener){
+		listenerXoaSB.remove(listener);
+	}
+	public void thongBaoKhiXoa(SanBanh sb){
+		for(ListenerXoaSanBanh listener : listenerXoaSB){
+			listener.xuLy(sb);
+		}
 	}
 
 	public void setComparator(Comparator<SanBanh> comp){
@@ -53,7 +70,7 @@ public class Model_SanBanh {
 			return dsSanBanh; 
 
 		try{
-			(new Model_SanBanh()).docFile(PATH);
+			(getInstance()).docFile(PATH);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
@@ -113,6 +130,7 @@ public class Model_SanBanh {
 		if (sb == null)
 			throw new IllegalArgumentException("Mã Sân Banh không tồn tại tồn tại");
 		dsSanBanh.remove(sb);
+		thongBaoKhiXoa(sb);
 	}
 
 	public void sua(SanBanh sbMoi) throws IllegalArgumentException{
@@ -200,13 +218,25 @@ public class Model_SanBanh {
 	};
 
 	/*
-		xu ly khi loai san bi xoa
+		xu ly khi cac thanh phan bi xoa o noi khac
 	*/
 	ListenerXoaLoaiSan listenerXoaLoaiSan = new ListenerXoaLoaiSan() {
 		public void xuLy(LoaiSan loaiSan) {
 			for (SanBanh sb : getDSSanBanh())
 				if (loaiSan.isEquals(sb.getLoaiSan()))
 					sb.setLoaiSan(null);
+		}
+	};
+	
+	ListenerXoaCN listenerXoaCN = new ListenerXoaCN() {
+		public void xuLy(ChiNhanh cn) {
+			System.out.println(cn.getMaCN());
+			for (SanBanh sb : getDSSanBanh()){
+				System.out.print(" " + sb.getMaCNNotThrow());
+				if (cn.getMaCN().equalsIgnoreCase(sb.getMaCNNotThrow()))
+					sb.setChiNhanh(null);
+			}
+			System.out.println(); 
 		}
 	};
 

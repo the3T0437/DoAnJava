@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package doan;
+package LoaiSan;
 
 import LoaiSan.LoaiSan;
 import LoaiSan.Model_LoaiSan;
@@ -24,7 +24,7 @@ public class ModelLoaiSanTest {
 	Model_LoaiSan mdLoaiSan; 
 	@Before
 	public void setUp() {
-		mdLoaiSan = new Model_LoaiSan();
+		mdLoaiSan = Model_LoaiSan.getInstance();
 		mdLoaiSan.clearAll();
 	}
 

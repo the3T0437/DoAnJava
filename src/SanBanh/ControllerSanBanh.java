@@ -3,19 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package SanBanh;
+import ChiNhanh.*;
 import LoaiSan.LoaiSan;
 import SanBanh.SanBanh;
 import SanBanh.Model_SanBanh;
 import SanBanh.Frm_SanBanh;
 import LoaiSan.Model_LoaiSan;
 import doan.LackingException;
-import doan.Model_ChiNhanh;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.awt.event.*;
 import java.util.Comparator;
 
 import doan.ListenerXoaLoaiSan;
+import doan.ListenerXoaCN;
 
 //test
 import LoaiSan.ControllerLoaiSan;
@@ -26,7 +27,7 @@ import LoaiSan.ControllerLoaiSan;
 public class ControllerSanBanh {
 	private Model_SanBanh mdSanBanh; 
 	private Model_LoaiSan mdLoaiSan; 
-	private Model_ChiNhanh mdChiNhanh; 
+	private Modal_CN mdChiNhanh; 
 	private Frm_SanBanh form;
 
 	public static void main(String[] args){
@@ -37,10 +38,15 @@ public class ControllerSanBanh {
 		ControllerLoaiSan controllerLS = new ControllerLoaiSan();
 		controllerLS.visibleTrue();
 	}
+
+	public void setVisibleTrue(){
+		this.form.setVisible(true);
+	}
 	
 	public ControllerSanBanh(){
 		mdLoaiSan = Model_LoaiSan.getInstance();
 		mdSanBanh = Model_SanBanh.getInstance();
+		mdChiNhanh = Modal_CN.getInstance();
 		
 		form = new Frm_SanBanh();
 
@@ -53,6 +59,7 @@ public class ControllerSanBanh {
 		form.getCbx_Sort().addItemListener(sortListener);
 
 		mdLoaiSan.addListener(listenerXoaLoaiSan);
+		mdChiNhanh.addListener(listenerXoaCN);
 	}
 
 	public void hienThi(){
@@ -228,6 +235,13 @@ public class ControllerSanBanh {
 	ListenerXoaLoaiSan listenerXoaLoaiSan = new ListenerXoaLoaiSan() {
 		@Override
 		public void xuLy(LoaiSan loaiSan) {
+			hienThi();
+		}
+	};
+
+	ListenerXoaCN listenerXoaCN = new ListenerXoaCN() {
+		@Override
+		public void xuLy(ChiNhanh cn) {
 			hienThi();
 		}
 	};

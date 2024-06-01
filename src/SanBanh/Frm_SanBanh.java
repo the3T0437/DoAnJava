@@ -20,6 +20,7 @@ public class Frm_SanBanh extends javax.swing.JFrame {
 	 */
 	public Frm_SanBanh() {
 		initComponents();
+                setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 	}
 
 	/**

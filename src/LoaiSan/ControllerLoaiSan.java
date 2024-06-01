@@ -4,7 +4,7 @@
  */
 package LoaiSan;
 import LoaiSan.LoaiSan;
-import LoaiSan.frm_LoaiSan;
+import LoaiSan.Frm_LoaiSan;
 import LoaiSan.Model_LoaiSan;
 import java.util.List;
 import java.util.ArrayList;
@@ -20,16 +20,20 @@ import javax.swing.JOptionPane;
 public class ControllerLoaiSan {
 	private final String path = "danhSach_LoaiSan.txt";
 	private Model_LoaiSan mdLoaiSan;
-	private frm_LoaiSan form; 
+	private Frm_LoaiSan form; 
 
 	public static void main(String[] args){
 		ControllerLoaiSan ctlLoaiSan = new ControllerLoaiSan(); 
 		ctlLoaiSan.form.setVisible(true);
 	}
 
+	public void setVisibleTrue(){
+		this.form.setVisible(true);
+	}
+
 	public ControllerLoaiSan(){
 		mdLoaiSan = Model_LoaiSan.getInstance();
-		form = new frm_LoaiSan();
+		form = new Frm_LoaiSan();
 
 		form.getBtn_them().addActionListener(this.getThemListener());
 		form.getBtn_xoa().addActionListener(this.getXoaListener());
@@ -89,7 +93,8 @@ public class ControllerLoaiSan {
 					baoLoi("số không hợp lệ");
 				}catch(IllegalArgumentException e){
 					baoLoi(e.getMessage());
-				}			}
+				}			
+			}
 		};
 	}
 

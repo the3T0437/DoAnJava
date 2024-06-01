@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package doan;
+package SanBanh;
 
+import doan.*;
 import SanBanh.SanBanh;
 import SanBanh.Model_SanBanh;
 import LoaiSan.LoaiSan;
@@ -26,7 +27,7 @@ public class Model_SanBanhTest {
 	
 	@Before
 	public void setUp() {
-		mdSanBanh = new Model_SanBanh();
+		mdSanBanh = Model_SanBanh.getInstance();
 		
 		try{
 			mdSanBanh.docFile(pathTestEmpty);
@@ -157,7 +158,7 @@ public class Model_SanBanhTest {
 		mdSanBanh.them(sb4);
 		mdSanBanh.them(sb5);
 
-		mdSanBanh.setComparator(Model_SanBanh.MALOAISAN_ASC);
+		mdSanBanh.setComparator(Model_SanBanh.MALS_ASC);
 		mdSanBanh.sapXep();
 		List<SanBanh> listSB = mdSanBanh.getDSSanBanh();
 		for (int i = 1; i < listSB.size(); i++){
@@ -166,7 +167,7 @@ public class Model_SanBanhTest {
 
 			assertEquals(true, maLS1.compareTo(maLS2) <= 0);
 		}
-		mdSanBanh.setComparator(Model_SanBanh.MACHINHANH_ASC);
+		mdSanBanh.setComparator(Model_SanBanh.MACN_ASC);
 		mdSanBanh.sapXep();
 		listSB = mdSanBanh.getDSSanBanh();
 		for (int i = 1; i < listSB.size(); i++){
@@ -175,7 +176,7 @@ public class Model_SanBanhTest {
 
 			assertEquals(true, maCN1.compareTo(maCN2) <= 0);
 		}
-		mdSanBanh.setComparator(Model_SanBanh.MASANBANH_ASC);
+		mdSanBanh.setComparator(Model_SanBanh.MASB_ASC);
 		mdSanBanh.sapXep();
 		listSB = mdSanBanh.getDSSanBanh();
 		for (int i = 1; i < listSB.size(); i++){

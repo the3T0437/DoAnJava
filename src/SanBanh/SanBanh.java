@@ -5,7 +5,7 @@
 package SanBanh;
 
 import LoaiSan.LoaiSan;
-import doan.ChiNhanh;
+import ChiNhanh.*;
 import doan.LackingException;
 
 /**
